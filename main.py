@@ -78,15 +78,11 @@ class Trajectory(object):
         '''predict based on the energy deposited over the foil surface'''
         '''returns the surface energy on the given foil surface'''
         '''assumes that all surface panels will recive the same energy'''
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
         [panel.update() for panel in self.surface_panels]
         [panel.update() for panel in self.wire_trajectory_panels]
         self.mid_points = np.array([panel.mid_point for panel in self.surface_panels])
-        self.surface_irradance = np.zeros_like(self.surface_panels) #Keeps track of how much energy a panel has been exposed to.
-=======
-=======
->>>>>>> Stashed changes
+        self.surface_irradance = np.zeros_like(self.surface_panels) #Keeps track of how much energy a panel has been exposed to
         self.surface_midpoints = np.array([(self.surface_nodes[n+1] + self.surface_nodes[n])/2 for n in range(self.surface_nodes.shape[0]-1)])
         self.surface_vectors = np.diff(self.surface_nodes,axis=0)
         self.surface_areas = [np.hypot(x,y) for x,y in  self.surface_vectors]
@@ -132,12 +128,12 @@ class Trajectory(object):
         # Calculate surface exposure
         self.surface_exposure = np.sum(self.visibility_matrix * self.perspective_matrix, axis=1)
         if verbose:
-<<<<<<< Updated upstream
 
 
-=======
+
+
             '''Surface visibility matrix'''
->>>>>>> Stashed changes
+
             plt.imshow(self.visibility_matrix, interpolation='spline16', cmap = "binary")
             plt.colorbar()
             plt.grid()
@@ -157,13 +153,13 @@ class Trajectory(object):
             plt.colorbar()
             plt.show()
 
-<<<<<<< Updated upstream
+
 
             plt.plot(self.surface_exposure, c = 'black')
             plt.xlabel("Surface panel index")
             plt.ylabel("Dimensionless heating parameter")
             plt.grid()
-=======
+
             '''Surface heating plot'''
             self.fig, self.ax = plt.subplots(figsize = (8,3), dpi = 100)
             self.ax.axhline(22,-20,220,color = "Red")
@@ -172,7 +168,7 @@ class Trajectory(object):
             self.ax.set_ylabel("Dimensionless heating parameter")
             self.ax.grid()
             plt.tight_layout()
->>>>>>> Stashed changes
+
             plt.show()
 
             '''Overlayed surface heating plot'''
@@ -180,11 +176,10 @@ class Trajectory(object):
             for n in range(0,len(self.surface_nodes)-1):
                 print(self.surface_nodes[n:n+2,0],self.surface_nodes[n:n+2,1])
                 self.axs.plot(self.surface_nodes[n:n+2,0],self.surface_nodes[n:n+2,1],c=cm.jet(self.surface_exposure[n]/np.max(self.surface_exposure)))
-<<<<<<< Updated upstream
-=======
+
             #self.axs.plot(self.wire_trajectory_nodes[:i])
 
->>>>>>> Stashed changes
+
             plt.gca().set_aspect('equal')
             plt.title("Surface heating")
             plt.xlabel("X position [mm]")
@@ -192,14 +187,11 @@ class Trajectory(object):
             plt.tight_layout()
             plt.grid()
             plt.show()
-<<<<<<< Updated upstream
             self.fig, self.ax = plt.subplots(subplot_kw=dict(projection='3d'))
             print(self.surface_exposure)
             self.ax.stem(self.surface_midpoints[:,0],self.surface_midpoints[:,1], self.surface_exposure)
             self.ax.set_proj_type('persp')
             plt.show()
-=======
-
             '''Overlayed heating animation'''
             # Create line segments from surface_nodes
             self.surface_segments = np.array([[self.surface_nodes[i], self.surface_nodes[i + 1]] for i in range(len(self.surface_nodes) - 1)])
@@ -216,18 +208,7 @@ class Trajectory(object):
             self.unsummed_surface_exposure  = self.visibility_matrix * self.perspective_matrix
             self.animation = FuncAnimation(self.fig, self.update, interval = len(self.surface_nodes)-1)
             plt.show()
-
->>>>>>> Stashed changes
         return self.surface_exposure
-    def Predict_geom(self):
-        '''Predicts the final geometry allowing for performance aware optimisation'''
-
-<<<<<<< Updated upstream
-
-
-=======
->>>>>>> Stashed changes
-
 class Panel(object):
     def __init__(self, p1,p2):
         self.points = np.vstack((p1,p2))
@@ -237,7 +218,6 @@ class Panel(object):
         self.mid_point = np.mean(self.points,axis=0)
         self.direction = np.sign(np.diff(self.points[:,0],axis = 0)[0]) #Is the direction of travel of curve
         self.line()
-
     def perpendicular(self, a) :
         self.b = np.empty_like(a)
         self.b[0] = -a[1]
@@ -599,7 +579,6 @@ class main(object):
         plt.gca().set_aspect('equal')
         plt.show()
 
-=======
         self.x, self.y = self.shape.Tip_geometry()#Extract the b-spline geometry as a set of points
         self.Tip_points = np.dstack((self.x,self.y))[0]#Stack the 2 arrays [N,] into an [N,2] array
         self.Tip_line = LineString([(self.Tip_points[i,0],self.Tip_points[i,1]) for i,_ in enumerate(self.Tip_points)])
@@ -818,7 +797,7 @@ class main(object):
         self.ax.plot(self.nodes[0],self.nodes[1])
         self.ax.plot(self.offset_points[:,0],self.offset_points[:,1])
         plt.show()
-<<<<<<< Updated upstream
+
 
         self.fig, self.ax = plt.subplots()
         self.ax.plot(self.loss_array)
@@ -837,8 +816,6 @@ class main(object):
         '''TAAAAA DAAAA'''
         '''Like magic'''
         '''I swear this should have been harder'''
-=======
->>>>>>> Stashed changes
 
         self.fig, self.ax = plt.subplots()
         self.ax.plot(self.loss_array, c = "Black")
@@ -877,8 +854,6 @@ class main(object):
         self.coding+=(self.end_command)
         self.output.write(self.coding)
         self.output.close()
-
->>>>>>> Stashed changes
 
 
 if __name__ == "__main__":

@@ -8,7 +8,7 @@ The performance of Hotwire tool paths is difficult to calculate due to the nonli
 SwarmCut has been used to manufacture aircraft at UoM UAV and the results produced show a consistent improvement in manufacturing accuracy.
 In the plot above you can see the Original offset path in blue, and the optimised path in red. If you follow the path you can see the separation between the paths changes through the cut.
 
-The part manufactured using SwarmCut are typically have a more consistent surface finish and reduced deviation from the desired geometry.
+The parts manufactured using SwarmCut, typically have a more consistent surface finish and reduced surface deviation from the desired geometry.
 
 ![Alt text](/Figures/Fixed_hist.png)
 ![Alt text](/Figures/CSE=14Smoothing=0.0001hist.png)
@@ -27,7 +27,7 @@ conda env create --name SwarmCut --file=environments.yml
 
 ## Usage:
 ### Step 1: Define Geometry
-Foil Geometry is defined by a standard X,Y foil definition.
+Foil Geometry is defined by a standard X,Y foil definition(No file headers).
 
 You can define your geometry by altering the foil variable
 ```
@@ -42,7 +42,7 @@ self.critical_surface_energy = your_material_cse
 ```
 
 ### Step 3: Optimisation
-Once the your parameters have been set run:
+Once the your parameters have been set, run:
 ```
 python main.py
 ```
@@ -71,5 +71,12 @@ SwarmCut provides superior geometric accuracy to a fixed offset approach form sm
 
 
 ## How does it work?
+SwarmCut works by calculating how hot thw wire will make every point on the foil surface as a result of a wire trajectory.\
+If the temperature is lower or higher than the temperature required for the material to be ablated then the manufactured geometry will be incorrect.
 
+![Alt text](/Figures/Original_Surface_Heating.png)
+If too much and too little heat means that the shape will be lumpy we want to make the heating as consistent as possible.\
+Since we already have a way to figure out how hot each place will be, we can adjust the path the wire takes a little at a time and see if it helps.
+If the nudge help we can keep it and, if not we try again. We keep nudging the path until it meets a chosen level of uniformity, we call this convergence.
+![Alt text](/Figures/New_Surface_Heating.png)
 ## Link to paper: [Here](https://github.com/RolloTully/SwarmCut/blob/main/Paper/SwarmCut.pdf)

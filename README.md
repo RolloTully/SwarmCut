@@ -75,6 +75,7 @@ SwarmCut works by calculating how hot thw wire will make every point on the foil
 If the temperature is lower or higher than the temperature required for the material to be ablated then the manufactured geometry will be incorrect.
 
 ![Alt text](/Figures/Original_Surface_Heating.png)
+
 If too much and too little heat means that the shape will be lumpy we want to make the heating as consistent as possible.\
 Since we already have a way to figure out how hot each place will be, we can adjust the path the wire takes a little at a time and see if it helps.
 If the nudge help we can keep it and, if not we try again. We keep nudging the path until it meets a chosen level of uniformity, we call this convergence.

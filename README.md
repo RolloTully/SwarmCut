@@ -1,12 +1,18 @@
 # [SwarmCut - Trajectory optimiser for Hotwire cutting](https://github.com/RolloTully/SwarmCut/blob/main/Paper/SwarmCut.pdf)
 
-## Abstract
+## Paper abstract
 The performance of Hotwire tool paths is difficult to calculate due to the nonlinear and multivariable interactions with the kerf width. Accurate cutting requires a balance of trajectory, velocity, and heating to achieve high geometric fidelity. To reduce the complexity we recontextualise the problem. Instead of attempting to predict wire kerf, a problem which has been explored thoroughly but has failed to see real world use, we instead consider it as an energy distribution problem. We introduce a new parameter, Critical Specific Energy (CSE), that quantifies the minimum thermal energy that must be delivered to the surface of a material to achieve ablation. Use of CSE simplifies the thermal-mechanical interaction, and allows for the construction of an indirect optimisation problem.  We formulate a bespoke Particle Swarm Optimisation (PSO) meta-heuristic using CSE to minimise surface deviation while considering real world manufacturing constraints. This method termed Swarm-Cut, is applied to a composite sandwich panel wing core, using Swarm-Cut reduced the mean surface deviation from 1.67 mm to 0.53 mm (68.3% reduction) and reduced the standard deviation of surface deviation(σΔ) from 1.59 mm to 0.352 mm (77.9% reduction) when compared to baseline trajectories demonstrating  gains in both manufacturing consistency, accuracy and simplifying process tuning.
 
 ## Results:
 ![Alt text](/Figures/Path_opt.png)
-SwarmCut has been used to manufacture aircraft at UOM UAV and the results produced show a consistent improvement in manufacturing accuracy.
+SwarmCut has been used to manufacture aircraft at UoM UAV and the results produced show a consistent improvement in manufacturing accuracy.
 In the plot above you can see the Original offset path in blue, and the optimised path in red. If you follow the path you can see the separation between the paths changes through the cut.
+
+The part manufactured using SwarmCut are typically have a more consistent surface finish and reduced deviation from the desired geometry.
+
+![Alt text](/Figures/Fixed foil.png)
+![Alt text](/Figures/CSE = 14 Smoothing  = 0.001 hist.png) 
+
 ## Installation:
 
 ### Windows + Python 3.10
@@ -58,7 +64,7 @@ If you part is over sized gradually increase your CSE value until the part reach
 
 ## Limitations:
 
-SwarmCut provides superior geometric accuracy, but, it has limitations that impact its current usefulness\
+SwarmCut provides superior geometric accuracy to a fixed offset approach form small to medium sized operations, but, it has limitations that impact its current usefulness\
   **2D Geometry**, SwarmCut is currently only available for 2D projected geometries. A 3D Version is planned in the future.\
   **CSE selection**, if you don't correctly identify your materials CSE the optimiser will run but your results will be very poor
 

@@ -10,8 +10,8 @@ In the plot above you can see the Original offset path in blue, and the optimise
 
 The part manufactured using SwarmCut are typically have a more consistent surface finish and reduced deviation from the desired geometry.
 
-![Alt text](/Figures/Fixed hist.png)
-![Alt text](/Figures/CSE = 14 Smoothing  = 0.0001 hist.png)
+![Alt text](/Figures/Fixed_hist.png)
+
 
 ## Installation:
 

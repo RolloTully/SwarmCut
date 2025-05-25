@@ -55,5 +55,4 @@ If you part is over sized gradually increase your CSE value until the part reach
 ## How does it work?
 
 
-##
-Full details of the papers folder
+##Link to paper: [Here](https://github.com/RolloTully/SwarmCut/blob/main/Paper/SwarmCut.pdf)

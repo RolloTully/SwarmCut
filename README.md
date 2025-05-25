@@ -53,7 +53,5 @@ This system is relatively simple. For EPP foams start with CSE = 22, run the opt
 If you part is over sized gradually increase your CSE value until the part reached the desired size, this is your system CSE value.
 
 ## How does it work?
-text
 
-##Link to paper:
-[Here](https://github.com/RolloTully/SwarmCut/blob/main/Paper/SwarmCut.pdf)
+## Link to paper: [Here](https://github.com/RolloTully/SwarmCut/blob/main/Paper/SwarmCut.pdf)

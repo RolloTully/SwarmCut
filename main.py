@@ -252,7 +252,7 @@ class main(object):
         self.surface_exposure = self.trajectory.predict_sde(verbose)
         self.Exposure_loss = np.mean((self.surface_exposure - self.trajectory.critical_surface_energy)**2)
         return self.Exposure_loss
-        
+
     def mainloop(self):
         self.shape = Shape(self.foil_dat, self.foil_dat, 300, 200, 2, 0, 5)
         self.x, self.y = self.shape.Tip_geometry()
@@ -383,6 +383,21 @@ class main(object):
         self.ax.axhline(22, -20, 220, color="Red")
         plt.tight_layout()
         self.ax.grid()
+        plt.show()
+
+        self.fig, self.ax = plt.subplots()
+        self.ax.set_aspect('equal')
+        self.ax.set_title("Tip foil profile and inital wire trajectory")
+        self.ax.set_ylabel("Y position [mm]")
+        self.ax.set_xlabel("X position [mm]")
+        self.ax.plot(self.Tip_points[:, 0], self.Tip_points[:, 1], color="black")
+        self.nodes = interpolate.splev(np.linspace(0, 1, 200, endpoint=False), [self.t, [self.Global_best_position[:, 0], self.Global_best_position[:, 1]], self.k])
+        self.line, = self.ax.plot(self.nodes[0], self.nodes[1], color="red")
+        self.add_arrow_to_line2D(self.ax, self.line, arrow_locs=np.linspace(0., 1., 200), arrowstyle='->')
+        self.line, = self.ax.plot(self.offset_points[:, 0], self.offset_points[:, 1], color="blue")
+        self.add_arrow_to_line2D(self.ax, self.line, arrow_locs=np.linspace(0., 1., 200), arrowstyle='->')
+
+
         plt.show()
 
 

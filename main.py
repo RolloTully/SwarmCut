@@ -21,7 +21,7 @@ class Trajectory(object):
         self.surface_nodes = surface
         self.wire_trajectory_nodes = wire_trajectory
         self.wire_velocity = wire_velocity
-        self.critical_surface_energy = 13
+        self.critical_surface_energy = 22
 
     def update(self,i):
         self.partial_exposure = np.sum(self.unsummed_surface_exposure[:, :i], axis=1)
@@ -178,6 +178,7 @@ class main(object):
         self.w = 0.6  # Inertia
 
         self.mainloop()
+        self.Export()
 
     def add_arrow_to_line2D(self, axes, line, arrow_locs=[0.2, 0.4, 0.6, 0.8], arrowstyle='-|>', arrowsize=1, transform=None):
         if not isinstance(line, mlines.Line2D):
@@ -251,6 +252,7 @@ class main(object):
         self.surface_exposure = self.trajectory.predict_sde(verbose)
         self.Exposure_loss = np.mean((self.surface_exposure - self.trajectory.critical_surface_energy)**2)
         return self.Exposure_loss
+        
     def mainloop(self):
         self.shape = Shape(self.foil_dat, self.foil_dat, 300, 200, 2, 0, 5)
         self.x, self.y = self.shape.Tip_geometry()
@@ -382,7 +384,7 @@ class main(object):
         plt.tight_layout()
         self.ax.grid()
         plt.show()
-        self.Export()
+
 
     def Export(self):
         self.nodes = interpolate.splev(np.linspace(0, 1, 200, endpoint=False), [self.t, [self.Global_best_position[:, 0], self.Global_best_position[:, 1]], self.k])

@@ -52,6 +52,11 @@ If you don't know you system CSE value you will need to calibrate the manufactur
 This system is relatively simple. For EPP foams start with CSE = 22, run the optimisation once manufacturing is complete measure a reference dimension and compare it to the design dimension.
 If you part is over sized gradually increase your CSE value until the part reached the desired size, this is your system CSE value.
 
+## Limitations:
+
+SwarmCut provides superior geometric accuracy, but, it has limitations that impact its current usefulness
+  ** 2D Geoemtry **
+
 ## How does it work?
 
 ## Link to paper: [Here](https://github.com/RolloTully/SwarmCut/blob/main/Paper/SwarmCut.pdf)

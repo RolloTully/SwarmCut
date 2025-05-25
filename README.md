@@ -54,7 +54,7 @@ If you part is over sized gradually increase your CSE value until the part reach
 
 ## Limitations:
 
-SwarmCut provides superior geometric accuracy, but, it has limitations that impact its current usefulness
+SwarmCut provides superior geometric accuracy, but, it has limitations that impact its current usefulness\
   ** 2D Geoemtry **
 
 ## How does it work?

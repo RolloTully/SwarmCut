@@ -81,4 +81,4 @@ Since we already have a way to figure out how hot each place will be, we can adj
 If the nudge help we can keep it and, if not we try again. We keep nudging the path until it meets a chosen level of uniformity, we call this convergence.
 We can see that once this is done the surface has almost perfectly uniform heating.
 ![Alt text](/Figures/New_Surface_Heating.png)
-## Link to paper: [Here](https://github.com/RolloTully/SwarmCut/blob/main/Paper/SwarmCut.pdf)
+## Link to full paper: [Here](https://github.com/RolloTully/SwarmCut/blob/main/Paper/SwarmCut.pdf)

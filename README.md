@@ -55,7 +55,7 @@ If you part is over sized gradually increase your CSE value until the part reach
 ## Limitations:
 
 SwarmCut provides superior geometric accuracy, but, it has limitations that impact its current usefulness\
-  **2D Geometry**, SwarmCut is currently only available for 2D projected geometries. A 3D Version is planned in the future.
+  **2D Geometry**, SwarmCut is currently only available for 2D projected geometries. A 3D Version is planned in the future.\
   **CSE selection**, if you don't correctly identify your materials CSE the optimiser will run but your results will be very poor
 
 

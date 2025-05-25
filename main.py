@@ -406,7 +406,7 @@ class main(object):
         self.nodes = np.dstack((self.nodes[0], self.nodes[1]))[0]
         print(np.max(self.nodes, axis=0))
         self.cutting_nodes = self.nodes - np.max(self.nodes, axis=0)
-        self.output = open("test.txt", "w")
+        self.output = open("g_code.txt", "w")
         self.coding = "G90\nM3\nG1 X0 Y0 A0 B0 F600\nG1 X0 Y-10 A0 B-10 F200\nG92 X0 Y0 A0 B0\n"
         for node in self.cutting_nodes:
             self.coding += f"G1 X{round(node[0], 4)} Y{round(node[1], 4)} A{round(node[0], 4)} B{round(node[1], 4)} F200\n"

@@ -44,13 +44,17 @@ Close all the plots(will remove these later)
 The optimiser will take a while to run but once its done you don't need to do anything further
 
 ### Step 4: Export
-The program will output "g_code.txt", this contains the 4 axis tool path for manufacturing
+The program will output "g_code.txt", this contains the 4 axis tool path for manufacturing.\
+If a .nc or .gc file is needed this can be done my changing the extension on line 409
+```
+409 self.output = open("your_file_name.your_extension", "w")
+```
 
 ## CSE Calibration
 If you don't know you system CSE value you will need to calibrate the manufacturing process.
 
-This system is relatively simple. For EPP foams start with CSE = 22, run the optimisation once manufacturing is complete measure a reference dimension and compare it to the design dimension.
-If you part is over sized gradually increase your CSE value until the part reached the desired size, this is your system CSE value.
+This system is relatively simple. For EPP foams start with a CSE of 13. Run the optimisation, once manufacturing is complete measure a reference dimension and compare it to the design dimension.
+If you part is over sized gradually increase your CSE value until the part reached the desired size(if the part is too small gradually reduce the CSE) this is your material CSE value.
 
 ## Limitations:
 
